@@ -239,5 +239,3 @@ Congratulations on completing the Cybersecurity SQL Adventure Lab! You've used S
 - Explore how this type of analysis fits into a broader cybersecurity strategy.
 
 ---
-
-This revised format follows the template structure you provided while incorporating your original content from the "official document."
