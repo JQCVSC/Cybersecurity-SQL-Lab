@@ -29,6 +29,14 @@ Welcome, aspiring cybersecurity analyst! In this lab, you'll use SQL to investig
 
 ## Setup Instructions
 
+### Make sure you create a DB instance in google cloud to add the tables and data
+
+# You can use a free SQL server, I Used https://www.freesqldatabase.com/freemysqldatabase/
+
+Or if you want to go with the cloud then you go about it in the steps below
+
+## Make sure MySQL is also installed on your local machine
+
 ### 1. Installing the Cloud SQL Auth Proxy
 
 The Cloud SQL Auth Proxy allows secure access to your Cloud SQL instance. The installation process depends on your operating system:
