@@ -184,7 +184,7 @@ Join the `log_in_attempts` and `employees` tables to get more information about 
 ### SQL Query
 
 ```sql
-SELECT l.event_id, l.username, l.login_date, l.login_time, l.country, e.department 
+SELECT l.username, l.login_date, l.login_time, l.country, e.department 
 FROM log_in_attempts l 
 JOIN employees e ON l.username = e.username 
 WHERE l.success = FALSE;
