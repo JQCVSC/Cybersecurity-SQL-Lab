@@ -31,7 +31,7 @@ Welcome, aspiring cybersecurity analyst! In this lab, you'll use SQL to investig
 
 ### Make sure you create a DB instance in google cloud to add the tables and data
 
-# You can use a free SQL server, I Used https://www.freesqldatabase.com/freemysqldatabase/
+You can use a free SQL server, I Used https://www.freesqldatabase.com/freemysqldatabase/
 
 Or if you want to go with the cloud then you go about it in the steps below
 
@@ -144,7 +144,8 @@ Find login attempts outside of business hours.
 ### SQL Query
 
 ```sql
-SELECT * FROM log_in_attempts WHERE login_time < '09:00:00' OR login_time > '17:00:00';
+SELECT * FROM log_in_attempts 
+WHERE TIME(login_time) < '09:00:00' OR TIME(login_time) > '17:00:00';
 ```
 
 ### Questions
@@ -192,9 +193,9 @@ Join the `log_in_attempts` and `employees` tables to get more information about 
 ### SQL Query
 
 ```sql
-SELECT l.username, l.login_date, l.login_time, l.country, e.department 
-FROM log_in_attempts l 
-JOIN employees e ON l.username = e.username 
+SELECT l.username, l.login_date, l.login_time, l.country, e.department
+FROM log_in_attempts l
+JOIN employees e ON l.username = e.username
 WHERE l.success = FALSE;
 ```
 
@@ -245,5 +246,4 @@ Congratulations on completing the Cybersecurity SQL Adventure Lab! You've used S
 - Try creating your own SQL queries to investigate other potential security issues.
 - Research more advanced SQL techniques for data analysis in cybersecurity.
 - Explore how this type of analysis fits into a broader cybersecurity strategy.
-
 ---
