@@ -21,6 +21,9 @@ In this lab, you will use SQL to investigate potential security threats in a com
 
 ---
 
+![Screenshot 2024-09-03 122811](https://github.com/user-attachments/assets/08065b2f-0e13-4020-a005-291ca29b5e50)
+
+
 ## Introduction
 
 Welcome, aspiring cybersecurity analyst! In this lab, you'll use SQL to investigate potential security threats in a company's database. You'll learn how to query databases, analyze login attempts, and identify suspicious activities.
