@@ -19,7 +19,7 @@ In this lab, you will use SQL to investigate potential security threats in a com
 # Setting Up Your Database
 ## If you dont have access to cloud systems then you can use a free SQL database, I Used https://www.freesqldatabase.com/freemysqldatabase/
 ### Make sure you create a DB instance in google cloud or AWS to add the tables and data, alternativley you can also create a vm instance and then add the database into the vm and access your database in that manner.
-## For your own security do not allow your cloud instance to be public unless you inted to share the lab with other users, then take the necessary fiewall precautions in your cloud network.
+## For your own security do not allow your cloud instance to be public unless you intend to share the lab with other users, then take the necessary firewall precautions in your cloud network.
 
 ## First, let’s create the database and name it organization:
 
