@@ -1,14 +1,10 @@
 ---
-
 # Cybersecurity SQL Adventure Lab
-
-## Description
 
 In this lab, you will use SQL to investigate potential security threats in a company's database. You'll learn how to query databases, analyze login attempts, and identify suspicious activities. This hands-on project is designed to demonstrate SQL for cybersecurity log analysis, including cloud database setup, sample logs, and SQL queries for detecting security threats. It is ideal for security analysts and students.
 
-## Table of Contents
+## Table of Contents  
 
-- [Introduction](#introduction)
 - [Setup Instructions](#setup-instructions)
 - [Quest 1: Reconnaissance](#quest-1-reconnaissance)
 - [Quest 2: Failed Infiltrations](#quest-2-failed-infiltrations)
@@ -18,27 +14,57 @@ In this lab, you will use SQL to investigate potential security threats in a com
 - [Final Challenge: Comprehensive Security Audit](#final-challenge-comprehensive-security-audit)
 - [Conclusion](#conclusion)
 - [Next Steps](#next-steps)
-
 ---
+ ### Setup Instructions
+# Setting Up Your Database
+## If you dont have access to cloud systems then you can use a free SQL database, I Used https://www.freesqldatabase.com/freemysqldatabase/
+### Make sure you create a DB instance in google cloud or AWS to add the tables and data, alternativley you can also create a vm instance and then add the database into the vm and access your database in that manner.
+## For your own security do not allow your cloud instance to be public unless you inted to share the lab with other users, then take the necessary fiewall precautions in your cloud network.
 
-![Screenshot 2024-09-03 122811](https://github.com/user-attachments/assets/08065b2f-0e13-4020-a005-291ca29b5e50)
+## First, let’s create the database and name it organization:
 
+```sql
+Create database organization;
+```
+First, let’s create two tables: log_in_attempts and employees. Here's the SQL to make it happen:
+```sql
 
-## Introduction
+CREATE TABLE log_in_attempts (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    login_date DATE NOT NULL,
+    login_time TIME NOT NULL,
+    country VARCHAR(50) NOT NULL,
+    ip_address VARCHAR(15) NOT NULL,
+    success BOOLEAN NOT NULL
+);
 
-Welcome, aspiring cybersecurity analyst! In this lab, you'll use SQL to investigate potential security threats in a company's database. You'll learn how to query databases, analyze login attempts, and identify suspicious activities.
+CREATE TABLE employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    device_id VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    department VARCHAR(50) NOT NULL,
+    office VARCHAR(50) NOT NULL
+```
 
----
+Now, let’s add some relevant sample data:
+```sql
 
-## Setup Instructions
-
-### Make sure you create a DB instance in google cloud to add the tables and data
-
-You can use a free SQL server, I Used https://www.freesqldatabase.com/freemysqldatabase/
+INSERT INTO log_in_attempts (username, login_date, login_time, country, ip_address, success) VALUES
+('jsmith', '2022-05-08', '17:30:00', 'USA', '192.168.1.1', TRUE),
+('ajonson', '2022-05-09', '19:15:00', 'MEX', '192.168.1.2', FALSE),
+('mjohnson', '2022-05-09', '20:30:00', 'CAN', '192.168.1.3', FALSE),
+('jdoe', '2022-05-10', '08:45:00', 'USA', '192.168.1.4', TRUE),
+('sbrown', '2022-05-10', '22:15:00', 'UK', '192.168.1.5', FALSE);
+INSERT INTO employees (device_id, username, department, office) VALUES
+('D001', 'jsmith', 'Marketing', 'East-170'),
+('D002', 'ajonson', 'Sales', 'North-110'),
+('D003', 'mjohnson', 'Finance', 'West-223'),
+('D004', 'jdoe', 'IT', 'South-045'),
+('D005', 'sbrown', 'HR', 'East-180');
+```
 
 Or if you want to go with the cloud then you go about it in the steps below
-
-## Make sure MySQL is also installed on your local machine
 
 ### 1. Installing the Cloud SQL Auth Proxy
 
@@ -74,12 +100,12 @@ Enter the password when prompted.
 
 ### 4. Accessing the Company Database
 
-Once connected to MySQL, access the company database:
+## Once connected to MySQL, access the company database:
 
 ```sql
 USE organization;
 ```
-
+![Screenshot 2024-09-03 122811](https://github.com/user-attachments/assets/08065b2f-0e13-4020-a005-291ca29b5e50)
 ---
 
 ## Quest 1: Reconnaissance
